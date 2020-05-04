@@ -21,7 +21,7 @@ def get_version(*file_paths):
     raise RuntimeError('Unable to find version string.')
 
 
-version = get_version("django-gcloud-tasks", "__init__.py")
+version = get_version("gcloudtasks", "__init__.py")
 
 
 if sys.argv[-1] == 'publish':
@@ -53,7 +53,7 @@ setup(
     author_email='me@dammy.co',
     url='https://github.com/damey2011/django-gcloud-tasks',
     packages=[
-        'django-gcloud-tasks',
+        'gcloudtasks',
     ],
     include_package_data=True,
     install_requires=[
