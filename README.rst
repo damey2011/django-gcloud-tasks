@@ -26,6 +26,12 @@ Add it to your `INSTALLED_APPS`:
         ...
     )
 
+Then run migration command
+
+.. code-block::
+
+    python manage.py migrate
+
 
 On the instance that would be processing the tasks, add django-gcloud-tasks's URL patterns:
 
