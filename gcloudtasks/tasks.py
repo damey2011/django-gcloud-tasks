@@ -6,6 +6,7 @@ import random
 import pytz
 from django.conf import settings
 from django.dispatch import Signal
+from google.api_core.exceptions import NotFound
 from google.cloud.tasks_v2.proto.target_pb2 import HttpRequest
 from google.cloud.tasks_v2.proto.task_pb2 import Task
 from google.protobuf.timestamp_pb2 import Timestamp
@@ -68,7 +69,10 @@ def create_task(
 
 def delete_task(name):
     """:param name: Takes in the full name of the task as returned in the create_task method above"""
-    client.delete_task(name)
+    try:
+        client.delete_task(name)
+    except NotFound:
+        logger.info(f'Task {name} does not exist anymore')
 
 
 class CloudTask:
